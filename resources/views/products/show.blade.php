@@ -1,43 +1,44 @@
+@extends('layouts.app')
 
-<h2>Product</h2>
-
-
-<table class="product-table">
-    <thead>
-        <tr>
-            <th class="product-header">Name</th>
-            <th class="product-header">Description</th>
-            <th class="product-header">Price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="product-row">
-            <td class="product-cell">{{ $product->name }}</td>
-            <td class="product-cell">{{ $product->description }}</td>
-            <td class="product-cell">{{ $product->price }}</td>
-        </tr>
-    </tbody>
-</table>
-
+@section('content')
+<div class="container">
+    <h1>Product Details</h1>
+    <div class="product-details">
+        <h2>{{ $product->name }}</h2>
+        <p><strong>Description:</strong> {{ $product->description }}</p>
+        <p><strong>Price:</strong> {{ $product->price }}</p>
+        <p><strong>Created At:</strong> {{ $product->created_at }}</p>
+        <p><strong>Updated At:</strong> {{ $product->updated_at }}</p>
+    </div>
+    
+  
+    <a href="{{ route('products.index') }}" class="btn btn-secondary mt-3">Back to Products</a>
+</div>
+@endsection
 
 <style>
-    .product-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 20px;
+    .product-details {
+        margin-top: 20px;
     }
-    .product-header {
-        background-color: #f2f2f2;
-        font-weight: bold;
-        text-align: left;
-        padding: 10px;
-        border-bottom: 2px solid #ddd;
+    .product-details h2 {
+        margin-bottom: 10px;
     }
-    .product-row:nth-child(even) {
-        background-color: #f9f9f9;
+    .product-details p {
+        margin-bottom: 5px;
     }
-    .product-cell {
-        padding: 10px;
-        border-bottom: 1px solid #ddd;
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 4px;
+    }
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+    
+
+    .mt-3 {
+        margin-top: 50px; 
     }
 </style>

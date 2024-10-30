@@ -45,4 +45,23 @@ class ProductController extends Controller
 
         return redirect()->route('products.index')->with('error','update failed');
     }
+    public function create()
+{
+    return view('products.create'); 
+}
+
+public function store(Request $request)
+{
+  
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'description' => 'nullable|string',
+        'price' => 'required|integer',
+    ]);
+
+    
+    $product = Product::create($request->all());
+
+    return redirect()->route('products.index')->with('success', 'Product created successfully.');
+}
 }
